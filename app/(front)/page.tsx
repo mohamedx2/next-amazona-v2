@@ -1,10 +1,10 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+
 /* eslint-disable @next/next/no-img-element */
-import ProductItem from '@/components/products/ProductItem'
-import data from '@/lib/data'
-import productService from '@/lib/services/productService'
-import { convertDocToObj } from '@/lib/utils'
-import { Metadata } from 'next'
-import Link from 'next/link'
+import ProductItem from '@/components/products/ProductItem';
+import productService from '@/lib/services/productService';
+import { convertDocToObj } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME || 'Next Amazona V2',
@@ -18,6 +18,7 @@ export default async function Home() {
   const latestProducts = await productService.getLatest()
   return (
     <>
+      alooooo
       <div className="w-full carousel rounded-box mt-4">
         {featuredProducts.map((product, index) => (
           <div

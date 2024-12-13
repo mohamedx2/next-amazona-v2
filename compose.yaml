@@ -1,0 +1,30 @@
+services:
+  web:
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - AUTH_SECRET=${AUTH_SECRET}
+      - AUTH_URL=${AUTH_URL}
+      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID}
+      - PAYPAL_APP_SECRET=${PAYPAL_APP_SECRET}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    develop:
+      command: npm run dev
+
+  mongo:
+    image: mongo
+    ports:
+      - "27018:27017"  # Host:Container
+    volumes:
+      - amazona:/data/db
+
+volumes:
+  amazona:
